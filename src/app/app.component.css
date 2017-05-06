@@ -1,0 +1,27 @@
+sebm-google-map {
+    flex: 3;
+    height: 600px;
+    display: inline-block;
+}
+
+sebm-google-map-content {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.sebm-google-map-container-inner {
+    width: 100%;
+}
+
+#rozklad {
+    flex: 2;
+}
+
+#maincontent {
+    display: flex;
+    flex: 5;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}

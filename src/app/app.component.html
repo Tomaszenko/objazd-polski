@@ -1,3 +1,45 @@
 <h1>
   {{title}}
 </h1>
+<div id="maincontent">
+  <sebm-google-map [latitude]="52.229" [longitude]="21.003">
+    <sebm-google-map-marker *ngFor="let location of locations" [latitude]="location.lat" [longitude]="location.lng" [title]="location.name">
+      <sebm-google-map-info-window [disableAutoPan]="true">
+          <p>Miasto: {{ location.city }}</p>
+          <p>Stacja: {{ location.name }}</p>
+      </sebm-google-map-info-window>
+          <!--<p>Połączenia</p>
+          <div id="connections">
+            <table>
+              <thead>
+                <th>Miasto</th>
+                <th>Ilość połączeń</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let neighbour of neighbours[location.city][location.name]">
+                  <td> {{ neighbour.city }} </td>
+                  <td> {{ neighbour.numTrains }} </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>-->
+            <!--<li *ngFor="let neighbour of neighbours[location.city][location.name]">
+              {{neighbour.city}}: {{neighbour.numTrains}}
+            </li>-->
+          <!--</ul>-->
+        <!--<div *ngFor="let neighbour of neighbours[location.city][location.name]">
+          {{neighbour.city}}: {{neighbour.numTrains}}
+        </div>-->
+    </sebm-google-map-marker>
+    <sebm-google-map-polyline *ngFor="let neighbourPair of neighbours" [strokeWeight]="1">
+         <sebm-google-map-polyline-point [latitude]="neighbourPair.fromLat" [longitude]="neighbourPair.fromLng">
+         </sebm-google-map-polyline-point>
+         <sebm-google-map-polyline-point [latitude]="neighbourPair.toLat" [longitude]="neighbourPair.toLng">
+         </sebm-google-map-polyline-point>
+     </sebm-google-map-polyline>
+  </sebm-google-map>
+  <div id="rozklad">
+    <div *ngIf="selectedStation">
+    </div>
+  </div>
+</div>
