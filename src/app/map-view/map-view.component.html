@@ -1,0 +1,81 @@
+<!--<h1>
+  {{title}}
+</h1>-->
+<button (click)="goBack()">Powrót</button>
+<div id="maincontent">
+  <sebm-google-map [latitude]="52.229" [longitude]="21.003">
+    <!--<sebm-google-map-marker *ngFor="let location of locations" [latitude]="location.lat" [longitude]="location.lng" [title]="location.name">
+      <sebm-google-map-info-window [disableAutoPan]="true">
+          <p>Miasto: {{ location.city }}</p>
+          <p>Stacja: {{ location.station }}</p>
+      </sebm-google-map-info-window>-->
+          <!--<p>Połączenia</p>
+          <div id="connections">
+            <table>
+              <thead>
+                <th>Miasto</th>
+                <th>Ilość połączeń</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let neighbour of neighbours[location.city][location.name]">
+                  <td> {{ neighbour.city }} </td>
+                  <td> {{ neighbour.numTrains }} </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>-->
+            <!--<li *ngFor="let neighbour of neighbours[location.city][location.name]">
+              {{neighbour.city}}: {{neighbour.numTrains}}
+            </li>-->
+          <!--</ul>-->
+        <!--<div *ngFor="let neighbour of neighbours[location.city][location.name]">
+          {{neighbour.city}}: {{neighbour.numTrains}}
+        </div>-->
+    <!--</sebm-google-map-marker>-->
+    <!--<sebm-google-map-polyline *ngFor="let neighbourPair of neighbours" [strokeWeight]="1">
+         <sebm-google-map-polyline-point [latitude]="neighbourPair.fromLat" [longitude]="neighbourPair.fromLng">
+         </sebm-google-map-polyline-point>
+         <sebm-google-map-polyline-point [latitude]="neighbourPair.toLat" [longitude]="neighbourPair.toLng">
+         </sebm-google-map-polyline-point>
+     </sebm-google-map-polyline>-->
+     <sebm-google-map-polyline *ngFor="let edg of tour">
+        <sebm-google-map-polyline-point [latitude]="edg.fromLat" [longitude]="edg.fromLng">
+         </sebm-google-map-polyline-point>
+         <sebm-google-map-polyline-point [latitude]="edg.toLat" [longitude]="edg.toLng">
+         </sebm-google-map-polyline-point>
+         <sebm-google-map-marker [latitude]="edg.fromLat" [longitude]="edg.fromLng" [title]="edg.fromStation">
+          <sebm-google-map-info-window [disableAutoPan]="true">
+            <h2>Stacja: {{ edg.fromStation }}</h2>
+            <p>Następna stacja: {{ edg.toStation }}
+            <p>Odjazd: {{ edg.departure }}</p>
+          </sebm-google-map-info-window>
+         </sebm-google-map-marker>
+         <!--<sebm-google-map-info-window [disableAutoPan]="true">
+          <p>Czas: {{ edg.length }}</p>
+         </sebm-google-map-info-window>-->
+     </sebm-google-map-polyline>  
+  </sebm-google-map>
+  <div id="rozklad">
+      <table>
+        <thead>
+          <th>Stacja</th>
+          <th>Następna stacja</th>
+          <th>Odjazd</th>
+          <th>Przyjazd</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let edg of tour">
+            <td>{{edg.fromStation}}</td>
+            <td>{{edg.toStation}}</td>
+            <td>{{edg.departure}}</td>
+            <td>{{edg.arrival}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!--<h2>Stacja: {{ edg.fromStation }}</h2>
+      <p>Następna stacja: {{ edg.toStation }}
+            <p>Odjazd: {{ edg.departure }}</p>
+    <div *ngIf="selectedStation">-->
+    <!--</div>-->
+  </div>
+</div>
